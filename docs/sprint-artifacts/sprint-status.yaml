@@ -1,0 +1,95 @@
+# generated: 2025-12-02
+# project: langchain
+# project_key: langchain-chatbot
+# tracking_system: file-system
+# story_location: docs/sprint-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic exists in epic file but not contexted
+#   - contexted or in-progress: Epic tech context created or work started
+#   - done: Epic completed
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - drafted: Story file created in stories folder by *create-story
+#   - ready-for-dev: Draft approved and story context created by *story-ready
+#   - in-progress: Developer actively working on implementation by *dev-story
+#   - review: Implementation complete, ready for review by *code-review
+#   - done: Story completed by *story-done
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - completed: Retrospective has been done by *retrospective
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epics should be marked `in-progress` before stories can be marked beyond `backlog`
+# - SM typically drafts next story ONLY after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', dev reviews, then Dev moves to 'done'
+
+generated: 2025-12-02
+project: langchain
+project_key: langchain-chatbot
+tracking_system: file-system
+story_location: docs/sprint-artifacts
+
+development_status:
+  # Epic 1: Foundation & Infrastructure Setup
+  epic-1: done
+  1-1-initialize-nextjs-frontend: done
+  1-2-initialize-fastapi-backend: done
+  1-3-database-setup-postgresql-alembic: done
+  1-4-docker-compose-orchestration: done
+  1-5-environment-variable-management: done
+  1-6-logging-monitoring-foundation: done
+  1-7-api-documentation-health-checks: done
+  epic-1-retrospective: optional
+
+  # Epic 2: User Authentication & Account Management
+  epic-2: backlog
+  2-1-user-registration-backend-api: backlog
+  2-2-user-login-jwt-generation: backlog
+  2-3-jwt-validation-protected-routes: backlog
+  2-4-user-registration-frontend-form: backlog
+  2-5-user-login-frontend-form: backlog
+  2-6-axios-interceptors-token-management: backlog
+  2-7-auth-context-useauth-hook: backlog
+  2-8-protected-route-guard: backlog
+  2-9-user-profile-display: backlog
+  epic-2-retrospective: optional
+
+  # Epic 3: Basic AI Chat Conversation
+  epic-3: backlog
+  3-1-langchain-service-setup-gpt4: backlog
+  3-2-chat-session-creation-management: backlog
+  3-3-send-message-generate-ai-response: backlog
+  3-4-basic-chat-interface-component: backlog
+  3-5-chat-service-api-integration: backlog
+  3-6-single-session-chat-page-autocreate: backlog
+  3-7-message-display-markdown-support: backlog
+  3-8-conversation-history-persistence: backlog
+  3-9-error-handling-retry-mechanism: backlog
+  epic-3-retrospective: optional
+
+  # Epic 4: Multi-Session Management
+  epic-4: backlog
+  4-1-session-list-sidebar-component: backlog
+  4-2-create-new-session-switch-context: backlog
+  4-3-delete-session-with-confirmation: backlog
+  4-4-rename-session-title: backlog
+  4-5-session-search-and-filter: backlog
+  4-6-session-context-react-context: backlog
+  epic-4-retrospective: optional
+
+  # Epic 5: Real-time Streaming Experience
+  epic-5: backlog
+  5-1-websocket-backend-endpoint-setup: backlog
+  5-2-langchain-streaming-callbacks: backlog
+  5-3-frontend-websocket-client-connection: backlog
+  5-4-realtime-message-streaming-display: backlog
+  5-5-nginx-websocket-proxy-configuration: backlog
+  5-6-websocket-connection-resilience: backlog
+  5-7-usewebsocket-custom-hook: backlog
+  epic-5-retrospective: optional

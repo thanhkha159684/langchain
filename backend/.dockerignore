@@ -1,0 +1,16 @@
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.env.local
+.git
+.gitignore
+.vscode
+*.log
+.pytest_cache
+.mypy_cache
+alembic/versions/*.py
+!alembic/versions/__init__.py

@@ -1,0 +1,149 @@
+# BMad Method Workflow Status - Langchain Project
+# Tracks progress through Analysis, Planning, and Solutioning phases
+# Implementation phase tracked separately in sprint-status.yaml
+
+# STATUS DEFINITIONS:
+# ==================
+# Initial Status (before completion):
+#   - required: Must be completed to progress
+#   - optional: Can be completed but not required
+#   - recommended: Strongly suggested but not required
+#   - conditional: Required only if certain conditions met (e.g., if_has_ui)
+#
+# Completion Status:
+#   - {file-path}: File created/found (e.g., "docs/product-brief.md")
+#   - skipped: Optional/conditional workflow that was skipped
+
+generated: "2025-12-01"
+project: "Langchain"
+project_type: "Chatbot System with Next.js, LangChain, JWT Auth, Docker & Nginx"
+selected_track: "bmad-method"
+field_type: "greenfield"
+workflow_path: ".bmad/bmm/workflows/workflow-status/paths/method-greenfield.yaml"
+
+workflow_status:
+  # Phase 0: Discovery (Optional)
+  phase_0_discovery:
+    - id: "brainstorm-project"
+      name: "Brainstorm Project"
+      agent: "analyst"
+      command: "/bmad:bmm:workflows:brainstorm-project"
+      status: "docs/analysis/brainstorming-session-2025-12-01.md"
+      note: "✅ Already completed"
+
+    - id: "research"
+      name: "Research"
+      agent: "analyst"
+      command: "/bmad:bmm:workflows:research"
+      status: "recommended"
+      note: "Technical/competitive analysis"
+
+    - id: "product-brief"
+      name: "Product Brief"
+      agent: "analyst"
+      command: "/bmad:bmm:workflows:product-brief"
+      status: "recommended"
+      note: "Strategic product planning (recommended for greenfield)"
+
+  # Phase 1: Planning
+  phase_1_planning:
+    - id: "prd"
+      name: "Product Requirements Document"
+      agent: "pm"
+      command: "/bmad:bmm:workflows:prd"
+      status: "required"
+      output: "Product Requirements Document with FRs and NFRs"
+      note: "Found empty PRD at docs/prd.md - needs to be completed"
+
+    - id: "validate-prd"
+      name: "Validate PRD"
+      agent: "pm"
+      command: "/bmad:bmm:workflows:validate-prd"
+      status: "optional"
+      note: "Quality check for PRD completeness"
+
+    - id: "create-ux-design"
+      name: "Create UX Design"
+      agent: "ux-designer"
+      command: "/bmad:bmm:workflows:create-ux-design"
+      status: "conditional"
+      condition: "if_has_ui"
+      note: "Chatbot has UI - UX design recommended"
+
+  # Phase 2: Solutioning
+  phase_2_solutioning:
+    - id: "create-architecture"
+      name: "Create Architecture"
+      agent: "architect"
+      command: "/bmad:bmm:workflows:create-architecture"
+      status: "required"
+      output: "System architecture document"
+      note: "Complete system design for greenfield projects"
+
+    - id: "create-epics-and-stories"
+      name: "Create Epics and Stories"
+      agent: "pm"
+      command: "/bmad:bmm:workflows:create-epics-and-stories"
+      status: "required"
+      note: "Break down PRD into implementable epics and stories"
+
+    - id: "test-design"
+      name: "Test Design (System-level)"
+      agent: "tea"
+      command: "/bmad:bmm:workflows:testarch-test-design"
+      status: "recommended"
+      output: "System-level testability review"
+      note: "Testability assessment before gate check"
+
+    - id: "validate-architecture"
+      name: "Validate Architecture"
+      agent: "architect"
+      command: "/bmad:bmm:workflows:validate-architecture"
+      status: "optional"
+      note: "Quality check for architecture completeness"
+
+    - id: "implementation-readiness"
+      name: "Implementation Readiness"
+      agent: "architect"
+      command: "/bmad:bmm:workflows:implementation-readiness"
+      status: "required"
+      note: "Validates PRD + UX + Architecture + Epics cohesion before implementation"
+
+  # Phase 3: Implementation
+  phase_3_implementation:
+    - id: "sprint-planning"
+      name: "Sprint Planning"
+      agent: "sm"
+      command: "/bmad:bmm:workflows:sprint-planning"
+      status: "required"
+      note: "Creates sprint plan - subsequent work tracked in sprint-status.yaml"
+
+# Current Status Summary
+current_phase: "Phase 0 - Discovery"
+current_workflow: "research"
+completed_workflows:
+  - "brainstorm-project"
+
+# Next Steps
+next_action: |
+  🎯 NEXT: Research Workflow
+  
+  📋 What to do:
+  1. Start a NEW CHAT (recommended for context isolation)
+  2. Load the ANALYST agent
+  3. Run command: /bmad:bmm:workflows:research
+  
+  Or continue in this chat and run research workflow next.
+
+# Existing Artifacts Found
+existing_artifacts:
+  - path: "docs/prd.md"
+    status: "empty"
+    note: "Needs to be completed in Phase 1"
+  - path: "docs/sprint-artifacts/workflow-tech-spec.md"
+    status: "complete"
+    size: "2033 lines"
+    note: "Detailed tech spec - can be used as reference for architecture phase"
+  - path: "docs/analysis/brainstorming-session-2025-12-01.md"
+    status: "complete"
+    note: "Initial brainstorming completed"
