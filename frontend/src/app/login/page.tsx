@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Form, Input, Button, Typography, Card, message, Checkbox } from 'antd';
+import { Form, Input, Button, Typography, Card, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
+import { useMessage } from '@/hooks/useMessage';
 import { UserLogin } from '@/types/auth.types';
 
 const { Title, Text } = Typography;
@@ -15,6 +16,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { login } = useAuth();
+  const { message } = useMessage();
 
   const onFinish = async (values: UserLogin) => {
     setLoading(true);

@@ -45,6 +45,8 @@ from app.auth.user_router import router as user_router
 app.include_router(user_router)
 from app.chat.router import router as chat_router
 app.include_router(chat_router, prefix="/api")
+from app.chat.websocket import router as websocket_router
+app.include_router(websocket_router, prefix="/api")
 
 
 # Logging middleware

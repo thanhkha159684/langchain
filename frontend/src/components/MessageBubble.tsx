@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button, message as antMessage, Typography } from "antd";
+import { Button, Typography } from "antd";
 import { CopyOutlined, CheckOutlined } from "@ant-design/icons";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useMessage } from "@/hooks/useMessage";
 import { Message } from "@/types/chat.types";
 
 const { Text } = Typography;
@@ -15,8 +16,9 @@ interface MessageBubbleProps {
   message: Message;
 }
 
-export default function MessageBubble({ message }: MessageBubbleProps) {
+export default function MessageBubble({ message: messageData }: MessageBubbleProps) {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const { message } = useMessage();
 
   const formatTime = (dateString: string) => {
     const date = new Date(dateString);
@@ -30,14 +32,14 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
     try {
       await navigator.clipboard.writeText(code);
       setCopiedCode(`${index}`);
-      antMessage.success("Code copied to clipboard!");
+      message.success("Code copied to clipboard!");
       setTimeout(() => setCopiedCode(null), 2000);
     } catch (error) {
-      antMessage.error("Failed to copy code");
+      message.error("Failed to copy code");
     }
   };
 
-  const isUser = message.role === "user";
+  const isUser = messageData.role === "user";
 
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
@@ -52,7 +54,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
           {isUser ? (
             // For user messages, just show plain text
             <div className="whitespace-pre-wrap break-words">
-              {message.content}
+              {messageData.content}
             </div>
           ) : (
             // For AI messages, render markdown
@@ -62,7 +64,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
                 code({ node, inline, className, children, ...props }: any) {
                   const match = /language-(\w+)/.exec(className || "");
                   const codeString = String(children).replace(/\n$/, "");
-                  const codeIndex = `${message.id}-${codeString.substring(0, 20)}`;
+                  const codeIndex = `${messageData.id}-${codeString.substring(0, 20)}`;
 
                   if (!inline && match) {
                     return (
@@ -177,7 +179,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
                 },
               }}
             >
-              {message.content}
+              {messageData.content}
             </ReactMarkdown>
           )}
         </div>
@@ -186,7 +188,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
             isUser ? "text-blue-100" : "text-gray-500"
           }`}
         >
-          {formatTime(message.created_at)}
+          {formatTime(messageData.created_at)}
         </div>
       </div>
     </div>

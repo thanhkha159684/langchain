@@ -4,7 +4,7 @@ LangChain Service for AI Chat Integration
 Handles GPT-4 integration, conversation chains, and memory management.
 """
 
-from typing import List, Dict
+from typing import List, Dict, AsyncGenerator
 from langchain_openai import ChatOpenAI
 import logging
 
@@ -77,6 +77,55 @@ class LangChainService:
         
         except Exception as e:
             logger.error(f"AI response generation failed: {e}", exc_info=True)
+            raise
+    
+    async def stream_response(
+        self,
+        user_message: str,
+        chat_history: List[Dict[str, str]] = None
+    ) -> AsyncGenerator[str, None]:
+        """
+        Stream AI response for a user message chunk by chunk.
+        
+        Args:
+            user_message: The user's input message
+            chat_history: Previous conversation messages (last 20 for context)
+        
+        Yields:
+            AI response text chunks
+        
+        Raises:
+            Exception: If AI generation fails
+        """
+        try:
+            logger.info(f"Streaming AI response for message (length: {len(user_message)})")
+            
+            # Prepare messages for the conversation
+            messages = []
+            
+            # System message
+            messages.append(("system", "You are a helpful AI assistant. You provide clear, accurate, and concise responses."))
+            
+            # Add chat history
+            if chat_history:
+                for msg in chat_history[-20:]:  # Only last 20 messages for context
+                    if msg["role"] == "user":
+                        messages.append(("human", msg["content"]))
+                    elif msg["role"] == "assistant":
+                        messages.append(("assistant", msg["content"]))
+            
+            # Add current message
+            messages.append(("human", user_message))
+            
+            # Stream response
+            async for chunk in self.llm.astream(messages):
+                if chunk.content:
+                    yield chunk.content
+            
+            logger.info("AI response streaming completed")
+        
+        except Exception as e:
+            logger.error(f"AI response streaming failed: {e}", exc_info=True)
             raise
     
     def health_check(self) -> bool:

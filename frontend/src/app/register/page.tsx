@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Form, Input, Button, Typography, Card, message } from 'antd';
+import { Form, Input, Button, Typography, Card } from 'antd';
 import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
+import { useMessage } from '@/hooks/useMessage';
 import { UserRegister } from '@/types/auth.types';
 
 const { Title, Text } = Typography;
@@ -15,6 +16,7 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { register } = useAuth();
+  const { message } = useMessage();
 
   const onFinish = async (values: UserRegister) => {
     setLoading(true);

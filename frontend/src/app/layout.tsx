@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { App as AntdApp } from "antd";
 import { AuthProvider } from "@/hooks/useAuth";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import "./globals.css";
@@ -18,11 +19,13 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <AntdRegistry>
-          <ThemeProvider>
-            <AuthProvider>
-              {children}
-            </AuthProvider>
-          </ThemeProvider>
+          <AntdApp>
+            <ThemeProvider>
+              <AuthProvider>
+                {children}
+              </AuthProvider>
+            </ThemeProvider>
+          </AntdApp>
         </AntdRegistry>
       </body>
     </html>
