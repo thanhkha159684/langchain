@@ -31,11 +31,11 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 py-12 px-4">
-      <Card className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <Title level={2}>Create Account</Title>
-          <Text type="secondary">Sign up to start chatting with AI</Text>
+    <div className="flex min-h-screen items-center justify-center bg-white py-12 px-4">
+      <Card className="w-full max-w-md shadow-sm" styles={{ body: { padding: '48px' } }}>
+        <div className="text-center mb-12">
+          <Title level={2} className="!mb-4">Create Account</Title>
+          <Text type="secondary" className="text-base">Sign up to start chatting with AI</Text>
         </div>
 
         <Form
@@ -58,10 +58,12 @@ export default function RegisterPage() {
                 message: 'Username can only contain letters, numbers, and underscores',
               },
             ]}
+            className="mb-5"
           >
             <Input
               prefix={<UserOutlined />}
               placeholder="Enter username"
+              className="rounded-md"
             />
           </Form.Item>
 
@@ -72,10 +74,12 @@ export default function RegisterPage() {
               { required: true, message: 'Please input your email!' },
               { type: 'email', message: 'Please enter a valid email!' },
             ]}
+            className="mb-5"
           >
             <Input
               prefix={<MailOutlined />}
               placeholder="Enter email"
+              className="rounded-md"
             />
           </Form.Item>
 
@@ -91,10 +95,12 @@ export default function RegisterPage() {
               },
             ]}
             hasFeedback
+            className="mb-5"
           >
             <Input.Password
               prefix={<LockOutlined />}
               placeholder="Enter password"
+              className="rounded-md"
             />
           </Form.Item>
 
@@ -114,20 +120,23 @@ export default function RegisterPage() {
                 },
               }),
             ]}
+            className="mb-5"
           >
             <Input.Password
               prefix={<LockOutlined />}
               placeholder="Confirm password"
+              className="rounded-md"
             />
           </Form.Item>
 
-          <Form.Item>
+          <Form.Item className="mt-8">
             <Button
               type="primary"
               htmlType="submit"
               loading={loading}
               block
               size="large"
+              className="rounded-md h-12"
             >
               Sign Up
             </Button>

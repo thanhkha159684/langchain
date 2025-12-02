@@ -2,20 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode */
+body.light {
+  background-color: #ffffff;
+  color: #262626;
+}
+
+/* Dark mode */
+body.dark {
+  background-color: #141414;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Scrollbar styling for dark mode */
+body.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+body.dark ::-webkit-scrollbar-track {
+  background: #1f1f1f;
+}
+
+body.dark ::-webkit-scrollbar-thumb {
+  background: #434343;
+  border-radius: 4px;
+}
+
+body.dark ::-webkit-scrollbar-thumb:hover {
+  background: #595959;
+}
+
+/* Light mode scrollbar */
+body.light ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+body.light ::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+body.light ::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 4px;
+}
+
+body.light ::-webkit-scrollbar-thumb:hover {
+  background: #bfbfbf;
 }

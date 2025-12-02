@@ -22,7 +22,9 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Spin size="large" tip="Loading..." />
+        <Spin size="large" spinning={true} tip="Loading...">
+          <div style={{ minHeight: '100px' }} />
+        </Spin>
       </div>
     );
   }

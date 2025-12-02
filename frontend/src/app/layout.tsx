@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { AuthProvider } from "@/hooks/useAuth";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,9 +18,11 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <AntdRegistry>
-          <AuthProvider>
-            {children}
-          </AuthProvider>
+          <ThemeProvider>
+            <AuthProvider>
+              {children}
+            </AuthProvider>
+          </ThemeProvider>
         </AntdRegistry>
       </body>
     </html>

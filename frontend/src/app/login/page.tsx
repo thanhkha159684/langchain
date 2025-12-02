@@ -31,11 +31,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 py-12 px-4">
-      <Card className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <Title level={2}>Welcome Back</Title>
-          <Text type="secondary">Sign in to continue chatting</Text>
+    <div className="flex min-h-screen items-center justify-center bg-white py-12 px-4">
+      <Card className="w-full max-w-md shadow-sm" styles={{ body: { padding: '48px' } }}>
+        <div className="text-center mb-12">
+          <Title level={2} className="!mb-4">Welcome Back</Title>
+          <Text type="secondary" className="text-base">Sign in to continue chatting</Text>
         </div>
 
         <Form
@@ -53,10 +53,12 @@ export default function LoginPage() {
             rules={[
               { required: true, message: 'Please input your username or email!' },
             ]}
+            className="mb-6"
           >
             <Input
               prefix={<UserOutlined />}
               placeholder="Enter username or email"
+              className="rounded-md"
             />
           </Form.Item>
 
@@ -66,10 +68,12 @@ export default function LoginPage() {
             rules={[
               { required: true, message: 'Please input your password!' },
             ]}
+            className="mb-6"
           >
             <Input.Password
               prefix={<LockOutlined />}
               placeholder="Enter password"
+              className="rounded-md"
             />
           </Form.Item>
 
@@ -84,13 +88,14 @@ export default function LoginPage() {
             </div>
           </Form.Item>
 
-          <Form.Item>
+          <Form.Item className="mt-8">
             <Button
               type="primary"
               htmlType="submit"
               loading={loading}
               block
               size="large"
+              className="rounded-md h-12"
             >
               Sign In
             </Button>
