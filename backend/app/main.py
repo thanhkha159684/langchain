@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.utils.logger import setup_logging, get_logger
+from app.auth.router import router as auth_router
 import uuid
 import time
 
@@ -37,6 +38,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include routers
+app.include_router(auth_router)
+from app.auth.user_router import router as user_router
+app.include_router(user_router)
 
 
 # Logging middleware

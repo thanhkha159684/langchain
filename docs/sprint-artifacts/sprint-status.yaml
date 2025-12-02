@@ -48,16 +48,16 @@ development_status:
   epic-1-retrospective: optional
 
   # Epic 2: User Authentication & Account Management
-  epic-2: backlog
-  2-1-user-registration-backend-api: backlog
-  2-2-user-login-jwt-generation: backlog
-  2-3-jwt-validation-protected-routes: backlog
-  2-4-user-registration-frontend-form: backlog
-  2-5-user-login-frontend-form: backlog
-  2-6-axios-interceptors-token-management: backlog
-  2-7-auth-context-useauth-hook: backlog
-  2-8-protected-route-guard: backlog
-  2-9-user-profile-display: backlog
+  epic-2: done
+  2-1-user-registration-backend-api: done
+  2-2-user-login-jwt-generation: done
+  2-3-jwt-validation-protected-routes: done
+  2-4-user-registration-frontend-form: done
+  2-5-user-login-frontend-form: done
+  2-6-axios-interceptors-token-management: done
+  2-7-auth-context-useauth-hook: done
+  2-8-protected-route-guard: done
+  2-9-user-profile-display: done
   epic-2-retrospective: optional
 
   # Epic 3: Basic AI Chat Conversation

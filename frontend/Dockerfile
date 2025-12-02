@@ -7,6 +7,20 @@ COPY package.json package-lock.json ./
 # Install dependencies
 RUN npm ci
 
+# Stage 1.5: Development (for npm run dev)
+FROM node:20-alpine AS development
+WORKDIR /app
+
+# Copy dependencies from deps stage
+COPY --from=deps /app/node_modules ./node_modules
+# Copy source code
+COPY . .
+
+ENV NODE_ENV=development
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
+
 # Stage 2: Builder
 FROM node:20-alpine AS builder
 WORKDIR /app

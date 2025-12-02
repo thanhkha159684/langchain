@@ -5,8 +5,9 @@ AI-powered chatbot with GPT-4 integration via LangChain, built with Next.js 14 a
 ## Project Status
 
 ✅ **Epic 1: Foundation & Infrastructure Setup - COMPLETED**
+✅ **Epic 2: User Authentication & Account Management - COMPLETED**
 
-All 7 stories completed:
+### Epic 1 - All 7 stories completed:
 - 1.1: Next.js Frontend Initialized
 - 1.2: FastAPI Backend Initialized  
 - 1.3: Database Setup (PostgreSQL + Alembic)
@@ -14,6 +15,17 @@ All 7 stories completed:
 - 1.5: Environment Variable Management
 - 1.6: Logging and Monitoring
 - 1.7: API Documentation & Health Checks
+
+### Epic 2 - All 9 stories completed:
+- 2.1: User Registration Backend API
+- 2.2: User Login JWT Generation
+- 2.3: JWT Validation & Protected Routes
+- 2.4: User Registration Frontend Form
+- 2.5: User Login Frontend Form
+- 2.6: Axios Interceptors & Token Management
+- 2.7: Auth Context & useAuth Hook
+- 2.8: Protected Route Guard
+- 2.9: User Profile Display
 
 ## Tech Stack
 
@@ -91,6 +103,33 @@ docker-compose ps
 - **Alternative Docs**: http://localhost/api/redoc
 - **Health Check**: http://localhost/api/health
 
+### 4. Test Authentication
+
+**Register a new user:**
+```bash
+curl -X POST http://localhost/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"username":"testuser","email":"test@example.com","password":"TestPass123"}'
+```
+
+**Login:**
+```bash
+curl -X POST http://localhost/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"testuser","password":"TestPass123"}'
+```
+
+**Access protected endpoint:**
+```bash
+curl -X GET http://localhost/api/users/me \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"
+```
+
+Or simply use the web interface:
+- Register: http://localhost/register
+- Login: http://localhost/login
+- Profile: http://localhost/profile (requires authentication)
+
 ### 4. Stop Services
 
 ```bash
@@ -100,6 +139,35 @@ docker-compose down
 # Stop and remove all data
 docker-compose down -v
 ```
+
+## Authentication & User Management
+
+The application now has full authentication support:
+
+### User Registration
+- Form validation (username, email, password requirements)
+- Password hashing with bcrypt
+- Duplicate username/email prevention
+- Auto-login after registration
+
+### User Login
+- Username or email login
+- JWT token generation (30-minute expiration)
+- Token stored in localStorage
+- Automatic token injection in API requests
+
+### Protected Routes
+- Route guard for authenticated pages
+- Automatic redirect to login for unauthenticated users
+- JWT validation on backend
+- User profile access
+
+### Available Pages
+- `/` - Home page (public)
+- `/register` - User registration
+- `/login` - User login
+- `/profile` - User profile (protected)
+- `/chat` - Chat interface (protected, placeholder for Epic 3)
 
 ## Development Setup (Without Docker)
 
@@ -319,11 +387,17 @@ Expected response:
 
 ## Next Steps
 
-Epic 2 will implement:
-- User registration and login
-- JWT authentication
-- Protected routes
-- User profile management
+✅ Epic 1: Foundation & Infrastructure (DONE)
+✅ Epic 2: User Authentication & Account Management (DONE)
+🔜 Epic 3: Basic AI Chat Conversation (Next)
+
+Epic 3 will implement:
+- LangChain service setup with GPT-4
+- Chat session creation and management
+- Send message and generate AI response
+- Basic chat interface component
+- Message display with markdown support
+- Conversation history persistence
 
 See `docs/epics.md` for complete roadmap.
 
