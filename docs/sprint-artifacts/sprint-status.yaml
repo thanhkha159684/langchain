@@ -61,16 +61,16 @@ development_status:
   epic-2-retrospective: optional
 
   # Epic 3: Basic AI Chat Conversation
-  epic-3: backlog
-  3-1-langchain-service-setup-gpt4: backlog
-  3-2-chat-session-creation-management: backlog
-  3-3-send-message-generate-ai-response: backlog
-  3-4-basic-chat-interface-component: backlog
-  3-5-chat-service-api-integration: backlog
-  3-6-single-session-chat-page-autocreate: backlog
-  3-7-message-display-markdown-support: backlog
-  3-8-conversation-history-persistence: backlog
-  3-9-error-handling-retry-mechanism: backlog
+  epic-3: done
+  3-1-langchain-service-setup-gpt4: done
+  3-2-chat-session-creation-management: done
+  3-3-send-message-generate-ai-response: done
+  3-4-basic-chat-interface-component: done
+  3-5-chat-service-api-integration: done
+  3-6-single-session-chat-page-autocreate: done
+  3-7-message-display-markdown-support: done
+  3-8-conversation-history-persistence: done
+  3-9-error-handling-retry-mechanism: done
   epic-3-retrospective: optional
 
   # Epic 4: Multi-Session Management

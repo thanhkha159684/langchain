@@ -15,6 +15,9 @@ class Settings(BaseSettings):
     
     # OpenAI
     openai_api_key: str = Field(..., env="OPENAI_API_KEY")
+    openai_model: str = Field(default="gpt-4", env="OPENAI_MODEL")
+    openai_temperature: float = Field(default=0.7, env="OPENAI_TEMPERATURE")
+    openai_max_tokens: int = Field(default=1000, env="OPENAI_MAX_TOKENS")
     
     # CORS
     allowed_origins: str = Field(default="http://localhost:3000,http://localhost", env="ALLOWED_ORIGINS")

@@ -43,6 +43,8 @@ app.add_middleware(
 app.include_router(auth_router)
 from app.auth.user_router import router as user_router
 app.include_router(user_router)
+from app.chat.router import router as chat_router
+app.include_router(chat_router, prefix="/api")
 
 
 # Logging middleware
